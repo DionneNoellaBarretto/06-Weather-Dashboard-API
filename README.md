@@ -23,7 +23,7 @@ GIVEN a weather dashboard with form inputs
 
 --------------------------------
 # DNB's SOLUTION: 
-UNC Boot Camp Submission: 🗂️[Github Repository]() | 📄[Github Page]()
+UNC Boot Camp Submission: 🗂️[Github Repository](https://github.com/DionneNoellaBarretto/06-Weather-Dashboard-API) | 📄[Github Page]( https://dionnenoellabarretto.github.io/06-Weather-Dashboard-API/)
 
 --------------------------------
 
