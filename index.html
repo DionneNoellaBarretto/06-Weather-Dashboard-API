@@ -6,30 +6,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- title of the website -->
     <title>Weather Dashboard</title>
+    <!-- bootstrap: referenced this guide for styling https://getbootstrap.com/docs/4.0/utilities/flex/ -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
       <!-- local css file link-->
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body class="min-100-vh flex-column">
-    <header class="p-5 text-center text-white bg-primary">
+    <header class="text-center bg-primary text-white">
             <!-- title of the page -->
       <h1>Weather App Dashboard</h1>
+       <!-- placeholder for the currentDay and time to be displayed -->
+    <strong> <p id="currentDay" title="Today's date and current time!" class="lead"></p></strong>
+   
       <!-- option for user to to toggle between celsius (metric) and fahrenheit (imperial) measurements-->
       <div class="row">
         <div class="col">
-          <p>Metric: °C, m/s</p>
+          <p>Imperial: °F, mph</p>
         </div>
         <label class="switch col">
           <input type="checkbox" id="theme-switcher">
           <span class="slider round"></span>
         </label>
         <div class="col">
-          <p>Imperial: °F, mph</p>
+          <p>Metric: °C, m/s</p>
         </div>
       </div>
-    </header>
+ </header>
+
+    <main> 
+        <!-- section for searching a city by zipcode or city name -->
+        <section class="row">
+                <div id="zipCodeSearch" class="zipCode">
+                  <div class="input-group">
+                    <input id="zipCode" type="search" class="form-control rounded " placeholder="Search for City" title="Use ZipCode or City Name" aria-label="Search"
+                      aria-describedby="search-addon" />
+                    <button id="searchBtn" type="button" class="SearchBtn btn-outline-primary">🔍</button>
+                  </div>
+                  <!-- placeholder for all past searches -->
+                  <div id="cityHistory" class="list-group d-flex flex-row align-items-center align-self-center">
+                  </div>
+                </div>
+        </section> <br>
+        <section class="row-4 h-50 pr-0 pt-3">
+                <div id="weatherData">
+                    <div id="currentWeather" class="border-dark">
+                        <div class="card">
+                          <div class="card-body">
+                            <h5 id="cityDate" class="card-title"></h5>
+                            <p class="card-text"> Temperature <span class="iconify" data-icon="wi-thermometer" data-inline="false"></span><span id="currentTemp">:</span></p>
+                            <!-- Icon made by <a href="https://www.flaticon.com/authors/those-icons" -->
+                            <p class="card-text"><span>Humidity <img width= "15" height ="15" src="./assets/images/humidity.svg" alt="Humidity Icon"></span><span id="currentHumidity">:</span></p>
+                            <p class="card-text"><span>Wind Speed <img width= "15" height ="15" src="./assets/images/windspeed_icon.png" alt="Wind Speed Icon"> </span><span id="currentWindSpeed">:</span></p>
+                            <p class="card-text"><span>UV Index <img width= "15" height ="15" src="./assets/images/uv-index.png" alt="UV Index Icon"> </span><span id="currentUVIndex" class="d-inline-block">:</span></p>
+                            </div>
+                        </div>
+                    </div>
+                      <div id="5DayWeather">
+                        <h3>5-Day Forecast:</h3>
+                        <div>
+                          <div id="fiveDay" class="d-flex justify-content-around"></div>
+                        </div>
+                    </div>
+                </div> 
+                    </section> 
+    </main>
 
     
   
 </body>
+<!-- added for thermometer icon -->
+<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+<!-- Added link to the jQuery library -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- link to moment.js for the date and time information up top -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<!-- link to javascript -->
+<script src="./assets/js/script.js"></script>
 </html>
