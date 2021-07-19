@@ -152,20 +152,16 @@ input:checked + .slider:before {
   }
 
   .card {
-    border: 1px solid #1a1a1a;
+    border: 3px dashed #1b0bf8;
     margin-bottom: 1rem;
     text-align: center;
-    width: 100%;
+    width: auto;
   }
   
   .card .card-header {
     padding: 1px;
     background-color: #2d3e50;
     color: #d9e9e8;
-  }
-  
-  .card .card-body {
-    border: auto;
   }
   
   .card .card-footer {
@@ -179,13 +175,11 @@ input:checked + .slider:before {
   .card.card-rounded .card-header {
     border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
   }
-
-
   
   /* style for the 5 Day div's */
   #fiveDay div
   {
-    width: 125px;
+    width: 135px;
     color: #fff;
     margin: 3px;
     padding: 5px;

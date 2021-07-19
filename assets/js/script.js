@@ -4,6 +4,7 @@ b) metric to imperial conversion logic
 c) the center box border needs to be squished to fit text width
 d) for history add a count to the history of list group
 e) width of the slider for imperial vs metric
+f) past 5 days (historical data)
 */
 
 
