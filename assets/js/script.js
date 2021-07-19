@@ -3,6 +3,7 @@ a) humidity logic always highlights in red
 b) metric to imperial conversion logic 
 c) the center box border needs to be squished to fit text width
 d) for history add a count to the history of list group
+e) width of the slider for imperial vs metric
 */
 
 
@@ -28,7 +29,7 @@ function currentTime() {
 currentTime();
 
 
-// Access toggle switch HTML element
+// Access toggle switch HTML element: for imperial to metric measurement conversion: https://openweathermap.org/api/one-call-api#data
 var themeSwitcher = document.querySelector("#theme-switcher");
 var container = document.querySelector(".container");
 
@@ -38,6 +39,12 @@ var mode = "Celsius";
 // Listen for a click event on toggle switch
 themeSwitcher.addEventListener("click", function() {
 // need to add logic for converting all calculations from metric to imperial 
+if (mode === "imperial") {
+   // call the api.openweathermap.org/data/2.5/onecall?lat=30.489772&lon=-99.771335&units=imperial
+  }
+  else {
+   // call the api.openweathermap.org/data/2.5/onecall?lat=30.489772&lon=-99.771335&units=metric
+  }
 });
 
 
@@ -47,7 +54,7 @@ const APIKey = "8bb35f7b4169a5a8d55d28abdec74bb0";
 /* I could limit the api to just usa or a specific country by tweaking the queries as: us&appid= or uk&appid= in the end as seen below
 "https://api.openweathermap.org/data/2.5/forecast?q=" + city + ",us&appid=" + APIKey; */
 
-let locations = [];
+let cities = [];
 
 //logic for when user enters city name
 function loadWeatherCity(city, isClicked) {
@@ -71,13 +78,13 @@ function loadWeatherCity(city, isClicked) {
           getWeatherData(getWDresponse.city.coord.lat, getWDresponse.city.coord.lon, getWDresponse.city.name);
 
       }).catch(function(getWDresponse){
-        alert("Invalid!! You have not entered a vaild city. Please click OK and supply a correct city name for that location's weather to be displayed")
+        alert("Invalid!! You have not entered a valid city. Please click OK and supply a correct city name for that location's weather to be displayed")
       });
 }
 
  //for Zip Code logic 
  function loadWeatherZip(zipCode, isClicked) {
-  // calling the same api but using zipcode parameter
+  // calling the same api but using zip code parameter
       var queryURL = "https://api.openweathermap.org/data/2.5/forecast?zip=" + zipCode + ",&appid=" + APIKey;
   
       // calling OpenWeatherMap API
@@ -122,8 +129,8 @@ function renderLocations()
     var divLocations = $("#cityHistory");
     divLocations.empty();  //clear the cities list before rendering it from the local storage object
 
-    $.each(locations, function(index, item){
-        var a = $("<a>").addClass("list-group-item list-group-item-action city").attr("data-city", locations[index]).text(locations[index]);
+    $.each(cities, function(index, item){
+        var a = $("<a>").addClass("list-group-item list-group-item-action city col-2 align-items-center align-self-center").attr("data-city", cities[index]).text(cities[index]);
         divLocations.append(a);
     });
 
@@ -145,22 +152,24 @@ function saveLocations(data)
 
     var city = data.city.name; //get the city came
 
-    locations.unshift(city);
-    localStorage.setItem("locations", JSON.stringify(locations));  //convert to a string and sent to local storage
+    cities.unshift(city);
+    //convert to a string and save to local storage
+    localStorage.setItem("cities", JSON.stringify(cities));  
 
 }
 
 //load locations from local storage to the locations array
 function loadLocations()
 {
-    var locationsArray = localStorage.getItem("locations");
+    var locationsArray = localStorage.getItem("cities");
     if (locationsArray) //if not undefined
-    {
-      locations = JSON.parse(locationsArray);  //make sure there is a locations object in local storage
+    { //make sure there is a cities object in local storage
+      locations = JSON.parse(locationsArray); 
       renderLocations();
     }
     else {
-      localStorage.setItem("locations", JSON.stringify(locations));  //if not make one and store it to local storage
+        //if not make one and store it to local storage
+      localStorage.setItem("cities", JSON.stringify(cities));  
     }
 }
 
@@ -180,27 +189,27 @@ function loadLocations()
         //current humidity level indicator s per https://www.airthings.com/resources/everything-you-need-to-know-about-humidity
         var humidityPercentage = weatherData.current.humidity;
         //console.log(humidityPercentage);
-        var bgColor = "";  //background color for humidity
+        var alertColor = "";  //alert color for humidity ( https://getbootstrap.com/docs/4.0/components/alerts/)
         var textColor = "";  //text color for for humidity
             // for readings >=30 and less than 60 (green)
         if (humidityPercentage >=30 && humidityPercentage < 60) {
-            bgColor = "bg-success";
-            textColor = "text-light";            
+            alertColor = "alert-success";
+            textColor = "text-dark";            
         } 
           // moderate or fair humidity levels (yellow)
         else if (humidityPercentage >=60 && humidityPercentage <70){
-          bgColor = "bg-warning";
+            alertColor= "alert-warning";
           textColor = "text-dark"; 
         } 
       //poor humidity reading (too low or too high) (red)
             else if ((humidityPercentage < 25) || (humidityPercentage >=70)){ 
-              bgColor = "bg-danger";
-              textColor = "text-light";           
+                alertColor = "alert-danger";
+              textColor = "text-dark";           
               }
     
      // concatenate humidity text and color indicator
-     $("#Humidity").html(humidityPercentage).addClass(bgColor + " p-1 " +  textColor);      // $("#Humidity").html(weatherData.current.humidity + "%");
-        $("#WindSpeed").html(weatherData.current.wind_speed + " MPH");
+     $("#Humidity").html(humidityPercentage).addClass(alertColor + " p-1 " +  textColor);      // $("#Humidity").html(weatherData.current.humidity + "%");
+        $("#WindSpeed").html(weatherData.current.wind_speed + " MPH"); //MPH --> miles per hour
     
         //current uv index  
         var uvIndex = weatherData.current.uvi;
@@ -235,7 +244,8 @@ function loadLocations()
         // initially the 5 day forecast is empty 
         fiveDayForecast.empty();
     /* iteration for number of days weather data to display
-    could also have done this: api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid={API key} where cnt is the number of days (1-16) for which an api response will be returned like for 10 days: api.openweathermap.org/data/2.5/forecast/daily?lat=35&lon=139&cnt=10&appid={API key}. For more information review https://openweathermap.org/forecast16#name16 
+    could also have done this: api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid={API key} where cnt is the number of days (1-16) for which an api response will be returned like for 10 days: api.openweathermap.org/data/2.5/forecast/daily?lat=35&lon=139&cnt=10&appid={API key}. For more information review https://openweathermap.org/forecast16#name16 OR
+    used this : https://openweathermap.org/forecast5
     */
         for (i=1; i <= 5; i++)  
         {
@@ -256,33 +266,35 @@ function loadLocations()
             temp = Math.round(((temp-273.15)*1.8) + 32);  
             // concatenate temperature reading
             var temp5 = $("<p>").html("Temp: " + temp +  "  &degF");
+            // concatenate wind speed reading https://openweathermap.org/api/one-call-api 
+            var windspeed5 = $("<p>").html("Wind Speed: " + weatherData.daily[i].wind_speed + " miles/hour");
             // concatenate humidity reading 
-            var humidity5 = $("<p>").html("Humidity: " + weatherData.daily[i].humidity + "%");
+            var humidity5 = $("<p>").html("Humidity: " + weatherData.daily[i].humidity + " %");
     // append and display it in the tile all together
             div.append(dateDisplay);
             div.append(icon);
             div.append(temp5);
             div.append(humidity5);
+            div.append(windspeed5);
             fiveDayForecast.append(div);
         }
         $("#weatherData").show();
     }
 
-
+// checking function
 $(document).ready(function () {
-
-    $("#weatherData").hide();  //Hide the div that will show all the weather data and we will show it once it is populated
-
-    loadLocations();  //get the locations from local storage and load them to the locations array
-
-    $("#searchBtn").click(function (event) {  //event handler for the city search input
+//default hidden div that will display all the weather data and we will appear once populated
+    $("#weatherData").hide();  
+//get the cities  from local storage and load them to the cities array
+    loadLocations();  
+//event handler for the city search input
+    $("#searchBtn").click(function (event) {  
         var element = event.target; //set element to the div that was clicked
-        var searchCriteria = $("#zipCode").val();  //get the user input
-        
-        if (searchCriteria !== "")  //make sure it is not empty
-        {
-            var zip = parseInt(searchCriteria); //is it a zip code or city name
-
+        var searchCriteria = $("#zipCode").val();  //get user input
+    //check to make sure it is not empty
+        if (searchCriteria !== "")  
+        { //check to ensure its a zip code or city name
+            var zip = parseInt(searchCriteria); 
             if (!isNaN(zip)) //yes it is a zip code
             {
                 loadWeatherZip(zip, false);

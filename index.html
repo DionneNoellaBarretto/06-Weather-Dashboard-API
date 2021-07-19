@@ -7,8 +7,7 @@
     <!-- title of the website -->
     <title>Weather Dashboard</title>
     <!-- bootstrap: referenced this guide for styling https://getbootstrap.com/docs/4.0/utilities/flex/ -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-      <!-- local css file link-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">      <!-- local css file link-->
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
@@ -22,34 +21,35 @@
    
       <!-- option for user to to toggle between celsius (metric) and fahrenheit (imperial) measurements-->
       <div class="row">
-        <div class="col">
+        <div class="col imperial">
           <p>Imperial: °F, mph</p>
         </div>
         <label class="switch col">
           <input type="checkbox" id="theme-switcher">
-          <span class="slider round"></span>
+          <span title="Click to move the slider left or right to set your preferred measurement standards" class="slider round min-100-vw"></span>
         </label>
-        <div class="col">
+        <div class="col metric">
           <p>Metric: °C, m/s</p>
         </div>
       </div>
  </header>
 
     <main> 
-        <!-- section for searching a city by zipcode or city name -->
+        <!-- section for searching a city by zip code or city name -->
         <section class="row">
+            <!-- col-12 ensures full width of screen per bootstrap -->
                 <div id="zipCodeSearch" class="zipCode col-12 text-left font-weight-bold">
                   <div class="input-group">
                     <input id="zipCode" type="search" class="form-control rounded " placeholder="Search for City" title="Use ZipCode or City Name" aria-label="Search"
                       aria-describedby="search-addon" />
                     <button id="searchBtn" type="button" class="SearchBtn btn-outline-primary">🔍</button>
                   </div>
-                  <!-- placeholder for all past searches -->
-                  <div id="cityHistory" class="overflow-auto list-group d-flex flex-row align-items-center align-self-center">
-                  </div>
+                  <p><u> <em>Recent Searches:</em></u></p>
+                                    <!-- placeholder for all past searches -->
+                  <div id="cityHistory" class="overflow-auto list-group d-flex flex-row align-items-center align-self-center"></div>
                 </div>
         </section> <br>
-        <section class="row-4 h-50">
+        <section class="h-50 justify-content-center align-items-center align-self-center">
                 <div id="weatherData">
                     <div id="currentWeather" class="border-light">
                         <div class="card">
@@ -58,7 +58,7 @@
                             <p class="card-text"><u><em>Temperature: </em></u><span class="iconify" data-icon="wi-thermometer" data-inline="false"> </span><span id="Temperature"></span></p>
                             <!-- Icon made by <a href="https://www.flaticon.com/authors/those-icons" -->
                                                         <!-- upon hovering over the body section a key to red the colors pops up -->
-                                <p title=" 'Red' highlight indicates unfavorable or poor levels, 'Yellow' indicates fair readings whilst 'Green' indicates favorable or normal levels" class="card-text"><u><em><span>Humidity: </span> </em></u><img width= "15" height ="15" src="./assets/images/humidity.svg" alt="Humidity Icon"> <span id="Humidity"></span> %</p>
+                                <p title=" 'Pink' highlight indicates unfavorable or poor levels, 'Yellow' indicates fair readings whilst 'Green' indicates favorable or normal levels" class="card-text"><u><em><span>Humidity: </span> </em></u><img width= "15" height ="15" src="./assets/images/humidity.svg" alt="Humidity Icon"> <span id="Humidity"></span> %</p>
                         <p class="card-text"><span><u><em>Wind Speed: </em></u><img width= "15" height ="15" src="./assets/images/windspeed_icon.png" alt="Wind Speed Icon"> </span><span id="WindSpeed"></span></p>
                                                <!-- upon hovering over the body section a key to red the colors pops up -->
                         <p title=" 'Red' highlight indicates unfavorable or poor levels, 'Yellow' indicates fair readings whilst 'Green' indicates favorable or normal levels" class="card-text"><span><u><em>UV Index: </em></u><img width= "15" height ="15" src="./assets/images/uv-index.png" alt="UV Index Icon"> </span><span id="UVIndex" class="d-inline-block"></span></p>
@@ -68,17 +68,15 @@
                       <div id="5DayForecast">
                         <u><em><h3>5-Day Weather Forecast:</h3></em></u>
                         <div>
-                          <div id="fiveDay" class="d-flex justify-content-around row"></div>
+                          <div id="fiveDay" class="d-flex flex-row justify-content-around"></div>
                         </div>
                     </div>
                 </div> 
                     </section> 
     </main>
+  </body>
 
-    
-  
-</body>
-<!-- added for thermometer icon -->
+<!-- added for thermometer icon to appear in the main flash card -->
 <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 <!-- Added link to the jQuery library -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

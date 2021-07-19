@@ -19,6 +19,15 @@ h1{
   margin-bottom: 0px;
   }
 
+  #cityDate{
+  font-weight: bold;
+  font-size: 20px;
+  background: linear-gradient(-225deg,rgb(15, 15, 231),rgb(44, 215, 238),rgb(236, 84, 250));
+  background-clip: inherit;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  }
 
 /* Styling the Switch button */
 .switch {
@@ -56,17 +65,17 @@ h1{
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-image: linear-gradient(red, orange,green);
   -webkit-transition: .4s;
-  transition: .4s;
+  transition: .5s;
 }
 
 input:checked + .slider {
-  background-color: rgb(29, 128, 210);
+  background-color: rgb(211, 214, 216);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px rgb(29, 128, 210);
+  box-shadow: 0 0 1px rgb(221, 224, 226);
 }
 
 input:checked + .slider:before {
@@ -94,6 +103,7 @@ input:checked + .slider:before {
 }
 
 
+
   /* style for the zip code div that holds the input search box */
   .zipCode{
     background-color:rgb(250, 246, 246);
@@ -104,6 +114,9 @@ input:checked + .slider:before {
     cursor: pointer;
   }
 
+  p{
+    margin-bottom: 0px;
+  }
 
  html {
     line-height: 1.15;
@@ -152,13 +165,11 @@ input:checked + .slider:before {
   }
   
   .card .card-body {
-    padding: 0.375rem;
     border: auto;
   }
   
   .card .card-footer {
     border-top: 1px solid #1a1a1a;
-    padding: 0.375rem;
   }
   
   .card.card-rounded {
@@ -172,10 +183,11 @@ input:checked + .slider:before {
 
   
   /* style for the 5 Day div's */
-  div#fiveDay div
+  #fiveDay div
   {
     width: 125px;
     color: #fff;
+    margin: 3px;
     padding: 5px;
-    border-radius: 3px;
+    border-radius: 5px;
   }
