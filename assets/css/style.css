@@ -6,6 +6,16 @@ h1{
   -webkit-text-fill-color: transparent;
 }
 
+footer{
+  font-size: 17px;
+  font-weight: bolder;
+  position: fixed !important;
+  bottom: 10px;
+  width: 100%;
+  height: 70px;
+  text-align: center;
+}
+
 /* current time display */
 #currentDay{
   font-weight: bolder;

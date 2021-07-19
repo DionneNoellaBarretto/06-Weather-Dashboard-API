@@ -31,23 +31,23 @@ function currentTime() {
 currentTime();
 
 
-// Access toggle switch HTML element: for imperial to metric measurement conversion: https://openweathermap.org/api/one-call-api#data
-var themeSwitcher = document.querySelector("#theme-switcher");
-var container = document.querySelector(".container");
+// // Access toggle switch HTML element: for imperial to metric measurement conversion: https://openweathermap.org/api/one-call-api#data
+// var themeSwitcher = document.querySelector("#theme-switcher");
+// var container = document.querySelector(".container");
 
-// Set default mode to Celsius (Metric)
-var mode = "Celsius";
+// // Set default mode to Celsius (Metric)
+// var mode = "Celsius";
 
-// Listen for a click event on toggle switch
-themeSwitcher.addEventListener("click", function() {
-// need to add logic for converting all calculations from metric to imperial 
-if (mode === "imperial") {
-   // call the api.openweathermap.org/data/2.5/onecall?lat=30.489772&lon=-99.771335&units=imperial
-  }
-  else {
-   // call the api.openweathermap.org/data/2.5/onecall?lat=30.489772&lon=-99.771335&units=metric
-  }
-});
+// // Listen for a click event on toggle switch
+// themeSwitcher.addEventListener("click", function() {
+// // need to add logic for converting all calculations from metric to imperial 
+// if (mode === "imperial") {
+//    // call the api.openweathermap.org/data/2.5/onecall?lat=30.489772&lon=-99.771335&units=imperial
+//   }
+//   else {
+//    // call the api.openweathermap.org/data/2.5/onecall?lat=30.489772&lon=-99.771335&units=metric
+//   }
+// });
 
 
 // https://stackoverflow.com/questions/38237673/how-to-hide-an-api-key-in-client-side-javascript
@@ -127,11 +127,11 @@ function getWeatherData(lat, lon, city) {
         });           
  };
 
-
 function renderLocations()
 {
     var divLocations = $("#cityHistory");
-    divLocations.empty();  //clear the cities list before rendering it from the local storage object
+    //clear the cities list before rendering it from the local storage object
+    divLocations.empty();  
 
     $.each(cities, function(index, item){
         var a = $("<a>").addClass("list-group-item list-group-item-action city col-1 align-items-center align-self-center").attr("data-city", cities[index]).text(cities[index]);
@@ -184,6 +184,9 @@ function loadLocations()
         var iconURL = "http://openweathermap.org/img/w/" + weatherData.current.weather[0].icon + ".png";  
         // adds a date after the city name is displayed followed by the current weather representative icon stored in the var defined above
         $("#cityDate").html(city + " (" + new Date().toLocaleDateString() + ") <img id=\"icon\" src=\"" + iconURL  + "\" alt=\"Weather icon\"/>");
+        // weather description 1liner
+        // var description = weatherData.data.weather[0].description;
+        // $("#Description").html(" " + description);
     //current day temp,humidity and windspeed
         var temp = parseInt(weatherData.current.temp);
         // fahrenheit calculations
@@ -274,15 +277,18 @@ function loadLocations()
             var windspeed5 = $("<p>").html("Wind Speed: " + weatherData.daily[i].wind_speed + " miles/hour");
             // concatenate humidity reading 
             var humidity5 = $("<p>").html("Humidity: " + weatherData.daily[i].humidity + " %");
+            // var description5 = $("<p>").html("Description: " + weatherData.daily[i].weather.description); - currently shows undefined
     // append and display it in the tile all together
             div.append(dateDisplay);
             div.append(icon);
             div.append(temp5);
             div.append(humidity5);
             div.append(windspeed5);
+            // div.append(description5);
             fiveDayForecast.append(div);
         }
         $("#weatherData").show();
+
     }
 
 // checking function

@@ -19,7 +19,7 @@
        <!-- placeholder for the currentDay and time to be displayed -->
     <strong> <p id="currentDay" title="Today's date and current time!" class="lead"></p></strong>
    
-      <!-- option for user to to toggle between celsius (metric) and fahrenheit (imperial) measurements-->
+      <!-- option for user to to toggle between celsius (metric) and fahrenheit (imperial) measurements
       <div class="row">
         <div class="col imperial">
           <p>Imperial: °F, mph</p>
@@ -31,7 +31,7 @@
         <div class="col metric">
           <p>Metric: °C, m/s</p>
         </div>
-      </div>
+      </div> -->
  </header>
 
     <main> 
@@ -52,9 +52,10 @@
         <section class="h-50 justify-content-center align-items-center align-self-center">
                 <div id="weatherData">
                     <div id="currentWeather" class="border-light">
-                        <div class="card">
+                        <div class="card"> 
                           <div class="card-body">
-                            <h5 id="cityDate" class="card-title"></h5>
+                            <!-- <p class="card-text"><u><em>Description: </em></u><span data-inline="false"> </span><span id="Description"></span></p> -->
+                          <h5 id="cityDate" class="card-title"></h5>
                             <p class="card-text"><u><em>Temperature: </em></u><span class="iconify" data-icon="wi-thermometer" data-inline="false"> </span><span id="Temperature"></span></p>
                             <!-- Icon made by <a href="https://www.flaticon.com/authors/those-icons" -->
                                                         <!-- upon hovering over the body section a key to red the colors pops up -->
@@ -81,6 +82,16 @@
                     </section> 
     </main>
   </body>
+  <!-- a page footer with a last modified timestamp using inline javascript for practice-->
+<footer class="footer text-muted hide">
+  <script>
+    document.write("Last modified on: " + document.lastModified + "");
+  </script>
+  <br>
+  <br>
+  <!-- leaving a gap here to accommodate spacing on mobile screens -->
+  <em> Copyrights &copy; DNB 2021 </em>
+</footer>
 
 <!-- added for thermometer icon to appear in the main flash card -->
 <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
