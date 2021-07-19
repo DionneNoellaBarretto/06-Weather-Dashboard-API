@@ -5,34 +5,6 @@ h1{
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
- /* HEIGHT / WIDTH UTILS */
- .min-100-vh {
-  min-height: 100vh;
-}
-.min-100-vw {
-  min-width: 100vw;
-}
-.text-center {
-  text-align: center;
-}
-.text-justify {
-  text-align: justify;
-}
-p {
-  font-size: 1.1rem;
-  margin: 0 0;
-  line-height: 1.5;
-}
-
-.text-white {
-  color: #ffffff;
-}
-
-/* BACKGROUND UTILS */
-.bg-primary {
-  background-color: #2d3e50;
-}
-
 
 /* current time display */
 #currentDay{
@@ -169,6 +141,8 @@ input:checked + .slider:before {
   .card {
     border: 1px solid #1a1a1a;
     margin-bottom: 1rem;
+    text-align: center;
+    width: 100%;
   }
   
   .card .card-header {
@@ -179,6 +153,7 @@ input:checked + .slider:before {
   
   .card .card-body {
     padding: 0.375rem;
+    border: auto;
   }
   
   .card .card-footer {
@@ -193,6 +168,8 @@ input:checked + .slider:before {
   .card.card-rounded .card-header {
     border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
   }
+
+
   
   /* style for the 5 Day div's */
   div#fiveDay div

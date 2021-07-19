@@ -13,7 +13,8 @@
 </head>
 
 <body class="min-100-vh flex-column">
-    <header class="text-center bg-primary text-white">
+    <!-- bootstrap colors -->
+    <header class="col-12 text-center bg-secondary text-white font-weight-bold">
             <!-- title of the page -->
       <h1>Weather App Dashboard</h1>
        <!-- placeholder for the currentDay and time to be displayed -->
@@ -37,35 +38,37 @@
     <main> 
         <!-- section for searching a city by zipcode or city name -->
         <section class="row">
-                <div id="zipCodeSearch" class="zipCode">
+                <div id="zipCodeSearch" class="zipCode col-12 text-left font-weight-bold">
                   <div class="input-group">
                     <input id="zipCode" type="search" class="form-control rounded " placeholder="Search for City" title="Use ZipCode or City Name" aria-label="Search"
                       aria-describedby="search-addon" />
                     <button id="searchBtn" type="button" class="SearchBtn btn-outline-primary">🔍</button>
                   </div>
                   <!-- placeholder for all past searches -->
-                  <div id="cityHistory" class="list-group d-flex flex-row align-items-center align-self-center">
+                  <div id="cityHistory" class="overflow-auto list-group d-flex flex-row align-items-center align-self-center">
                   </div>
                 </div>
         </section> <br>
-        <section class="row-4 h-50 pr-0 pt-3">
+        <section class="row-4 h-50">
                 <div id="weatherData">
-                    <div id="currentWeather" class="border-dark">
+                    <div id="currentWeather" class="border-light">
                         <div class="card">
                           <div class="card-body">
                             <h5 id="cityDate" class="card-title"></h5>
-                            <p class="card-text"> Temperature <span class="iconify" data-icon="wi-thermometer" data-inline="false"></span><span id="currentTemp">:</span></p>
+                            <p class="card-text"><u><em>Temperature: </em></u><span class="iconify" data-icon="wi-thermometer" data-inline="false"> </span><span id="Temperature"></span></p>
                             <!-- Icon made by <a href="https://www.flaticon.com/authors/those-icons" -->
-                            <p class="card-text"><span>Humidity <img width= "15" height ="15" src="./assets/images/humidity.svg" alt="Humidity Icon"></span><span id="currentHumidity">:</span></p>
-                            <p class="card-text"><span>Wind Speed <img width= "15" height ="15" src="./assets/images/windspeed_icon.png" alt="Wind Speed Icon"> </span><span id="currentWindSpeed">:</span></p>
-                            <p class="card-text"><span>UV Index <img width= "15" height ="15" src="./assets/images/uv-index.png" alt="UV Index Icon"> </span><span id="currentUVIndex" class="d-inline-block">:</span></p>
+                                                        <!-- upon hovering over the body section a key to red the colors pops up -->
+                                <p title=" 'Red' highlight indicates unfavorable or poor levels, 'Yellow' indicates fair readings whilst 'Green' indicates favorable or normal levels" class="card-text"><u><em><span>Humidity: </span> </em></u><img width= "15" height ="15" src="./assets/images/humidity.svg" alt="Humidity Icon"> <span id="Humidity"></span> %</p>
+                        <p class="card-text"><span><u><em>Wind Speed: </em></u><img width= "15" height ="15" src="./assets/images/windspeed_icon.png" alt="Wind Speed Icon"> </span><span id="WindSpeed"></span></p>
+                                               <!-- upon hovering over the body section a key to red the colors pops up -->
+                        <p title=" 'Red' highlight indicates unfavorable or poor levels, 'Yellow' indicates fair readings whilst 'Green' indicates favorable or normal levels" class="card-text"><span><u><em>UV Index: </em></u><img width= "15" height ="15" src="./assets/images/uv-index.png" alt="UV Index Icon"> </span><span id="UVIndex" class="d-inline-block"></span></p>
                             </div>
                         </div>
                     </div>
-                      <div id="5DayWeather">
-                        <h3>5-Day Forecast:</h3>
+                      <div id="5DayForecast">
+                        <u><em><h3>5-Day Weather Forecast:</h3></em></u>
                         <div>
-                          <div id="fiveDay" class="d-flex justify-content-around"></div>
+                          <div id="fiveDay" class="d-flex justify-content-around row"></div>
                         </div>
                     </div>
                 </div> 
