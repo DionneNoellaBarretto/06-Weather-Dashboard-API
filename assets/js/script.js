@@ -5,6 +5,7 @@ c) the center box border needs to be squished to fit text width
 d) for history add a count to the history of list group
 e) width of the slider for imperial vs metric
 f) past 5 days (historical data)
+g) geolocation based on browser https://www.youtube.com/watch?v=DDxy-sCiKQw
 */
 
 
@@ -56,6 +57,8 @@ const APIKey = "8bb35f7b4169a5a8d55d28abdec74bb0";
 "https://api.openweathermap.org/data/2.5/forecast?q=" + city + ",us&appid=" + APIKey; */
 
 let cities = [];
+
+
 
 //logic for when user enters city name
 function loadWeatherCity(city, isClicked) {
@@ -131,7 +134,7 @@ function renderLocations()
     divLocations.empty();  //clear the cities list before rendering it from the local storage object
 
     $.each(cities, function(index, item){
-        var a = $("<a>").addClass("list-group-item list-group-item-action city col-2 align-items-center align-self-center").attr("data-city", cities[index]).text(cities[index]);
+        var a = $("<a>").addClass("list-group-item list-group-item-action city col-1 align-items-center align-self-center").attr("data-city", cities[index]).text(cities[index]);
         divLocations.append(a);
     });
 
