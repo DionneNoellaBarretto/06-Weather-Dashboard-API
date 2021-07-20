@@ -1,5 +1,6 @@
 /* 
-a) humidity logic always highlights in red
+a) humidity logic always highlights in red due to persistence once a place shows a value (on a refreshed page)
+Example: if you search for boise first all looks well , but if you search for mumbai ( or places with red color humidity levels then search for boise - the color for boise's readings will red for humidity )
 b) metric to imperial conversion logic 
 c) the center box border needs to be squished to fit text width
 d) for history add a count to the history of list group
@@ -8,7 +9,7 @@ f) past 5 days (historical data)
 g) geolocation based on browser https://www.youtube.com/watch?v=DDxy-sCiKQw
 h) location pictures dynamic load
 i) description of the weather ( currently returns undefined)
-j) fix scroller for recent cities to reflect a counter for repeating cities
+j) fix scroll for recent cities to reflect a counter for repeating cities
 */
 
 
@@ -199,29 +200,33 @@ function loadLocations()
         //current humidity level indicator s per https://www.airthings.com/resources/everything-you-need-to-know-about-humidity
         var humidityPercentage = weatherData.current.humidity;
         //console.log(humidityPercentage);
+        // 2 ways of implementing color legends - either using alert colors or text colors
         var alertColor = "";  //alert color for humidity ( https://getbootstrap.com/docs/4.0/components/alerts/)
-        var textColor = "";  //text color for for humidity
+        var textColor = "";  //text color for for humidity  (https://getbootstrap.com/docs/5.0/utilities/colors/)
             // for readings >=30 and less than 60 (green)
         if (humidityPercentage >=30 && humidityPercentage < 60) {
-            alertColor = "alert-success";
-            textColor = "text-dark";            
+
+            // alertColor = "alert-success";
+            textColor = "text-success bg-dark";            
         } 
           // moderate or fair humidity levels (yellow)
         else if (humidityPercentage >=60 && humidityPercentage <70){
-            alertColor= "alert-warning";
-          textColor = "text-dark"; 
+
+            // alertColor= "alert-warning";
+            textColor = "text-warning bg-dark"; 
         } 
       //poor humidity reading (too low or too high) (red)
             else if ((humidityPercentage < 25) || (humidityPercentage >=70)){ 
-                alertColor = "alert-danger";
-              textColor = "text-dark";           
-              }
+
+                // alertColor = "alert-danger";
+                textColor = "text-danger bg-dark";        
+        }
     
      // concatenate humidity text and color indicator
      $("#Humidity").html(humidityPercentage).addClass(alertColor + " p-1 " +  textColor);      // $("#Humidity").html(weatherData.current.humidity + "%");
         $("#WindSpeed").html(weatherData.current.wind_speed + " MPH"); //MPH --> miles per hour
     
-        //current uv index  
+        //current uv index  https://www.who.int/uv/publications/en/UVIGuide.pdf : uv guide
         var uvIndex = weatherData.current.uvi;
         var bgColor = "";  //background color for UV Index
         var textColor = "";  //text color for UV Index
