@@ -27,8 +27,13 @@ UNC Boot Camp Submission: 🗂️[Github Repository](https://github.com/DionneNo
 
 --------------------------------
 
-### ResponseUI Solution - Desktop, Tablet & Mobile Views
-Starting Screen: <img src= "./Assets/images/StarterScreen.png">
+### Application Views
+Starting Screen: <img src= "./assets/images/StartingScreen.png">
+ZipCode City Search: <img src= "./assets/images/Search_by_ZipCode.png">
+City Name City Screen: <img src= "./assets/images/Search_by_City_Name.png">
+InvalidZipCode/CityName Prompts: <img src= "./assets/images/InvalidCityName.png"> <img src= "./assets/images/InvalidZipCode.png">
+Readings: <img src= "./assets/images/Readings.png">
+Search Functionality: <img src= "./assets/images/SearchFunctionality.png">
 
 ## Grading Requirements
 
@@ -50,7 +55,7 @@ This homework is graded based on the following criteria:
 ✅ GitHub repository contains application code.
 ✅ Application loads with no errors.
 ```
-
+<img src= "./assets/images/No Errors.png">
 ### Application Quality: 15%
 ```
 ✅ Application user experience is intuitive and easy to navigate.

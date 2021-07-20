@@ -6,6 +6,9 @@ d) for history add a count to the history of list group
 e) width of the slider for imperial vs metric
 f) past 5 days (historical data)
 g) geolocation based on browser https://www.youtube.com/watch?v=DDxy-sCiKQw
+h) location pictures dynamic load
+i) description of the weather ( currently returns undefined)
+j) fix scroller for recent cities to reflect a counter for repeating cities
 */
 
 
