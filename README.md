@@ -32,8 +32,9 @@ Starting Screen: <img src= "./assets/images/StartingScreen.png">
 ZipCode City Search: <img src= "./assets/images/Search_by_ZipCode.png">
 City Name City Screen: <img src= "./assets/images/Search_by_City_Name.png">
 InvalidZipCode/CityName Prompts: <img src= "./assets/images/InvalidCityName.png"> <img src= "./assets/images/InvalidZipCode.png">
-Readings: <img src= "./assets/images/Readings.png">
 Search Functionality: <img src= "./assets/images/SearchFunctionality.png">
+Different Readings: <img src= "./assets/images/Readings.png"> <img src= "./assets/images/Favourable Weather.png"> <img src= "./assets/images/Mixed Results.png"> <img src= "./assets/images/Unfavourable Numbers.png">
+
 
 ## Grading Requirements
 
