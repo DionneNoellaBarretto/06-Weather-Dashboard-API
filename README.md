@@ -57,6 +57,7 @@ This homework is graded based on the following criteria:
 ✅ Application loads with no errors.
 ```
 <img src= "./assets/images/No Errors.png">
+
 ### Application Quality: 15%
 ```
 ✅ Application user experience is intuitive and easy to navigate.
